@@ -41,24 +41,26 @@
             </column>
 
         </createTable>
-        
+
+        <!--Create table messages-->
+
         <createTable tableName="messages">
 
             <column name="id" type="BIGINT">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            
+
             <column name="body" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
-            
+
             <column name="create_time" type="timestamp without time zone">
             </column>
-            
+
             <column name="receiver_id" type="BIGINT">
                 <constraints foreignKeyName="fk_messages_rcv_chatuser" references="chatuser(id)"/>
             </column>
-            
+
             <column name="sender_id" type="BIGINT">
                 <constraints foreignKeyName="fk_messages_snd_chatuser" references="chatuser(id)"/>
             </column>
