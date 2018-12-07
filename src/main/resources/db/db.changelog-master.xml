@@ -8,7 +8,14 @@
 
     <changeSet id="1" author="aleks.k">
 
+        <preConditions onFail="MARK_RAN">
+            <not><tableExists schemaName="public" tableName="chatuser" /></not>
+            <not><tableExists schemaName="public" tableName="ban" /></not>
+            <not><tableExists schemaName="public" tableName="messages" /></not>
+        </preConditions>
+
         <!--Create table chatuser-->
+
         <createTable tableName="chatuser">
 
             <column name="id" type="BIGINT">
@@ -37,7 +44,7 @@
             </column>
 
             <column name="chatuser_id" type="BIGINT">
-                <constraints nullable="false" foreignKeyName="fk_chatuser_ban" references="chatuser(id)"/>
+                <constraints foreignKeyName="fk_chatuser_ban" references="chatuser(id)"/>
             </column>
 
         </createTable>
